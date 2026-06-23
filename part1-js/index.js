@@ -269,28 +269,43 @@ const roster = [
 
 // E1.
 // Log the name of the third student.
-
+console.log(roster[2].name)
 
 // E2.
 // Using forEach, log the name of every student who is present.
-
+roster.forEach(function(student){
+  if(student.present === true){
+    console.log(student.name)
+  }
+})
 
 // E3.
 // Create a new array containing only the students who passed (grade >= 70).
 // Log each passing student's name and grade.
+const passing = roster.filter(function(student){
+  return student.grade >= 70
+})
+passing.forEach(function(student){
+console.log(student.name + ":" + student.grade)
+})
 
 
 // E4.
 // Create a new array of just the names of all students (no other data).
 // Log the result array.
-
-
+const names = roster.map(function(student){
+  return student.name
+})
+console.log(names)
 // E5.
 // EXPLAIN: Why would you store objects inside an array?
 //          What problem does that structure solve compared to
 //          storing everything in separate variables?
 //
-//          answer:
+//          answer: storing everything in separe variable will make things harder
+//          as you have to name lots of differnt variables names when storing objects
+//          inside an array does not need to do that and you can use loops like forEach, filter, 
+//          and map to work with all the data easily!
 
 
 // ------------------------------------------------------------
@@ -305,6 +320,9 @@ console.log("\n[ SECTION F — Functions ]")
 // Write a function called greet that takes a name as an argument
 // and returns a greeting string.
 //
+function greet(name){
+  return "Hello, " + name + "!"
+}
 console.log(greet("Alex"))   // → "Hello, Alex!"
 console.log(greet("Mike"))   // → "Hello, Mike!"
 
@@ -312,19 +330,31 @@ console.log(greet("Mike"))   // → "Hello, Mike!"
 // F2.
 // Write a function called square that takes a number and returns its square.
 //
+function square(num){
+  return num ** 2
+}
 console.log(square(4))   // → 16
 console.log(square(9))   // → 81
 //
 // EXPLAIN: What does the return keyword do?
 //          What does a function return if you forget to write return?
 //
-//          answer:
+//          answer:return sends the result back to whoever called the function.
+//                if you forget return fuction it will give undefined
+//              because the result is calculated but never handed back
 
 
 // F3.
 // Write a function called isEven that takes a number and returns
 // true if it is even and false if it is odd.
 //
+function isEven(num){
+  if(num % 2 === 0)
+    return true
+  else{
+    return false
+  }
+}
 console.log(isEven(4))   // → true
 console.log(isEven(7))   // → false
 console.log(isEven(0))   // → true
@@ -335,6 +365,13 @@ console.log(isEven(0))   // → true
 // and returns the total of all the numbers added together.
 // Use a loop inside — do not use a built-in method.
 //
+function sum(array){
+  let total = 0
+  for(let i=0;i < array.length;i++){
+    total = total += array[i] // total += array
+  }
+  return total
+}
 console.log(sum([1, 2, 3, 4, 5]))   // → 15
 console.log(sum([10, 20, 30]))       // → 60
 console.log(sum([]))                 // → 0
@@ -346,6 +383,13 @@ console.log(sum([]))                 // → 0
 // It should not return anything.
 // Do not use the native .forEach() inside your function — use a for loop.
 //
+
+function myForEach(array, callback){
+  for(let i =0;i< array.length;i++){
+    callback(array[i])
+  }
+
+}
 myForEach([1, 2, 3], function(n) {
   console.log(n)
 })
@@ -367,7 +411,13 @@ myForEach([1, 2, 3], function(n) {
 //
 console.log(myMap([1, 2, 3], (n) => n * 2))    // → [2, 4, 6]
 console.log(myMap([1, 2, 3], (n) => n + 10))   // → [11, 12, 13]
-
+function myMap(array, callback){
+    let newArray = []  
+    for(let i = 0; i < array.length; i++){
+        newArray.push(callback(array[i]))
+    }
+    return newArray
+}
 
 // F7.
 // Write a function called myFilter that takes an array and a callback function as arguments.
@@ -382,4 +432,17 @@ console.log(myFilter([10, 25, 30, 45], n => n % 2 === 0))   // → [10, 30]
 //          What is the key difference between what they return?
 //          Why do neither of them change the original array?
 //
-//          answer:
+//          answer:myMap transforms EVERY item and returns the same length array.
+// myFilter only keeps items that pass the test so the 
+// returned array can be smaller than the original.
+// neither of them change the original array because both functions push items 
+// into a NEW empty array and never touch the original array directly.
+function myFilter(array, callback){
+    let newArray = []
+    for(let i = 0; i < array.length; i++){
+        if(callback(array[i])){      // if callback returns true
+            newArray.push(array[i]) // only then push!
+        }
+    }
+    return newArray
+}
