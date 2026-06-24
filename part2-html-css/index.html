@@ -54,10 +54,40 @@
         Both rules target the same paragraph.
         Which color will the paragraph actually be? Why does one rule win?
 
-        Answer:
+        Answer: #intro wins because id selectors are more specific than
+        tag selectors. the paragraph will be tomato color.
 
 -->
 
 <!-- ============================================================ -->
-<!-- Write your complete HTML page starting below this line      -->
+<!-- Write your complete HTML page starting below this line  
+     -->
 <!-- ============================================================ -->
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Checkpoint Page</title>
+    <link rel="stylesheet" href="look.css">
+    <!-- it goes into head as<head> loads before the <body> so
+      putting CSS there makes sure styles are ready before the 
+      user sees anything!! -->
+  </head>
+  <body>
+    <h1>My Checkpoint Page</h1>
+    <p id="intro">HTML and CSS.This is interesting.</p>
+    <h2 id="section-title">I want to learn more.</h2>
+    <!--the difference between a class and an id is that a class can have like 
+    multiple items or elements with the same class but and id is unique and can 
+    only have one. two elements can share the same class when two elementcannot 
+    share same id-->
+    <ul>
+      <li class="highlight">item1</li>
+      <li>item2</li>
+      <li class="highlight">item3</li>
+      <li>item4</li>
+    </ul>
+    <div id="box">this is div</div>
+    <button id="click-me">Click Me</button>
+  </body>
+</html>

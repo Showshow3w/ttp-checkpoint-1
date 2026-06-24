@@ -12,27 +12,38 @@
   TASK A
   Using the body TAG selector, set a background color on the page.
 */
-
+body{
+  background-color: lightblue;
+}
 
 /*
   TASK B
   Using the h1 TAG selector, set a font size and a color.
 */
-
+h1{
+  font-size: 40px;
+  color: black;
+}
 
 /*
   TASK C
   Using the CLASS selector, style the list items with the highlight class.
   Give them a background color and some padding so they stand out.
 */
-
+.highlight{
+  background-color: white;
+  padding: 1px;
+}
 
 /*
   TASK D
   Using the ID selector, give the h2 with the id section-title a color that is
   different from the h1 and different from body text.
 */
+#section-title{
+  color: darkblue;
 
+}
 
 /*
   TASK E
@@ -47,9 +58,16 @@
            Write your answer as a comment below this rule.
 
 
-           answer:
+           answer:padding is the space between the text and the border.
+           margin is the space between border and other elements.
 */
-
+#box{
+  width: 75px;
+  height: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+}
 
 /*
   TASK F
@@ -57,7 +75,13 @@
   It must have a background color, a text color, a border, padding,
   and a cursor: pointer that turns into a pointer when the user hovers over it.
 */
-
+#click-me{
+  background-color: steelblue;
+  color: white;
+  border: 2px solid darkblue;
+  padding: 8px;
+  cursor: pointer;
+}
 
 /*
   TASK G — Specificity
@@ -72,5 +96,14 @@
            What is CSS specificity and how does it determine which rule wins?
            Write your answer as a comment below these two rules.
 
-           answer:
+           answer: #intro wins because id selector is more specific 
+           than the p tag selector. CSS specificity determines 
+           which rule wins by choosing the most specific selector
 */
+p{
+  color: green;
+}
+
+#intro{
+  color: darkblue;
+}
