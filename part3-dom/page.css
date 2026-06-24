@@ -44,3 +44,8 @@ button {
   border-radius: 6px;
   min-height: 60px;
 }
+
+.highlighted {
+  background-color: yellow;
+  color: red;
+}
